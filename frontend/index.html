@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitReserve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: LOGIN
+══════════════════════════════════════════════ -->
+<div id="view-login" class="view active">
+  <div class="auth-wrapper">
+    <div class="logo-big">
+      <div class="logo-circle">FR</div>
+      <span class="logo-text">FitReserve</span>
+    </div>
+    <p class="auth-subtitle">Tu entrenamiento, cuando quieras</p>
+
+    <div class="card auth-card">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('login')">Iniciar sesión</button>
+        <button class="tab" onclick="switchTab('register')">Registrarse</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="tab-login">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="tu@email.com">
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" id="login-password" placeholder="••••••••">
+        </div>
+        <div id="login-error" class="error-msg hidden"></div>
+        <button class="btn-primary full" onclick="doLogin()">Vamos a por ello →</button>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="tab-register" class="hidden">
+        <div class="input-group">
+          <label>Nombre completo</label>
+          <input type="text" id="reg-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="reg-email" placeholder="tu@email.com">
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres">
+        </div>
+        <div id="register-error" class="error-msg hidden"></div>
+        <button class="btn-primary full" onclick="doRegister()">Crear cuenta →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR (visible en todas menos login)
+══════════════════════════════════════════════ -->
+<nav id="navbar" class="hidden">
+  <div class="nav-logo" onclick="navigate('calendario')">
+    <div class="logo-circle small">FR</div>
+    <span>FitReserve</span>
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn" data-view="calendario" onclick="navigate('calendario')">Calendario</button>
+    <button class="nav-btn" data-view="reservas" onclick="navigate('reservas')">Reservas</button>
+    <button class="nav-btn entrenador-only hidden" data-view="clientes" onclick="navigate('clientes')">Clientes</button>
+    <button class="nav-btn entrenador-only hidden" data-view="horarios" onclick="navigate('horarios')">Horarios</button>
+    <button class="nav-btn" data-view="perfil" onclick="navigate('perfil')">Perfil</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: CALENDARIO SEMANAL
+══════════════════════════════════════════════ -->
+<div id="view-calendario" class="view hidden">
+  <div class="page-container">
+
+    <div class="cal-header">
+      <div class="logo-circle small">FR</div>
+      <span class="cal-titulo">FitReserve</span>
+    </div>
+
+    <div class="semana-nav">
+      <button class="btn-icon" onclick="cambiarSemana(-1)">‹</button>
+      <span id="semana-label" class="semana-label-txt"></span>
+      <button class="btn-icon" onclick="cambiarSemana(1)">›</button>
+    </div>
+
+    <div id="dias-semana"></div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: HORARIOS DEL DÍA
+══════════════════════════════════════════════ -->
+<div id="view-horario-dia" class="view hidden">
+  <div class="page-container">
+
+    <div class="dia-header">
+      <button class="btn-back-dia" onclick="navigate('calendario')">←</button>
+      <h1 id="horario-dia-titulo" class="dia-titulo">Miércoles</h1>
+    </div>
+    <p class="dia-fecha-sub" id="horario-dia-fecha"></p>
+
+    <div id="turnos-container"></div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: CREAR RESERVA
+══════════════════════════════════════════════ -->
+<div id="view-crear-reserva" class="view hidden">
+  <div class="page-container">
+    <div class="page-header with-back">
+      <button class="btn-back" onclick="navigate('horario-dia')">← Volver</button>
+      <div>
+        <h1>Confirmar reserva</h1>
+        <p class="page-subtitle">Revisa los detalles antes de confirmar</p>
+      </div>
+    </div>
+
+    <div class="card resumen-reserva">
+      <div class="resumen-row">
+        <span class="resumen-label">📅 Fecha</span>
+        <span id="res-fecha" class="resumen-valor"></span>
+      </div>
+      <div class="resumen-row">
+        <span class="resumen-label">🕐 Hora</span>
+        <span id="res-hora" class="resumen-valor"></span>
+      </div>
+      <div class="resumen-row">
+        <span class="resumen-label">👤 Entrenador</span>
+        <span class="resumen-valor">Manuel Entrenador</span>
+      </div>
+      <div class="resumen-row">
+        <span class="resumen-label">⏱ Duración</span>
+        <span class="resumen-valor">60 minutos</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Comentario (opcional)</label>
+      <textarea id="reserva-comentario" placeholder="Ej: Quiero trabajar piernas y core..." rows="3"></textarea>
+    </div>
+
+    <div id="crear-error" class="error-msg hidden"></div>
+    <div id="crear-success" class="success-msg hidden"></div>
+
+    <button class="btn-primary full" onclick="confirmarReserva()">Confirmar reserva</button>
+    <button class="btn-secondary full" onclick="navigate('horario-dia')">Cancelar</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: RESERVAS (activas + historial)
+══════════════════════════════════════════════ -->
+<div id="view-reservas" class="view hidden">
+  <div class="page-container">
+    <div class="page-header">
+      <h1 id="reservas-titulo">Mis reservas</h1>
+    </div>
+
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="tabs-filter">
+      <button class="tab active" onclick="filtrarReservas('activa')">Activas</button>
+      <button class="tab" onclick="filtrarReservas('completada')">Completadas</button>
+      <button class="tab" onclick="filtrarReservas('cancelada')">Canceladas</button>
+    </div>
+
+    <div id="lista-reservas"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: CLIENTES (solo entrenador)
+══════════════════════════════════════════════ -->
+<div id="view-clientes" class="view hidden">
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Gestión de clientes</h1>
+      <p class="page-subtitle">Todos los clientes registrados</p>
+    </div>
+    <div id="lista-clientes"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: HORARIOS (solo entrenador)
+══════════════════════════════════════════════ -->
+<div id="view-horarios" class="view hidden">
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Gestión de horarios</h1>
+      <p class="page-subtitle">Define tu disponibilidad semanal</p>
+    </div>
+
+    <div class="card form-card">
+      <h3>Añadir bloque de disponibilidad</h3>
+      <div class="form-row">
+        <div class="input-group">
+          <label>Día de la semana</label>
+          <select id="disp-dia">
+            <option value="0">Lunes</option>
+            <option value="1">Martes</option>
+            <option value="2">Miércoles</option>
+            <option value="3">Jueves</option>
+            <option value="4">Viernes</option>
+            <option value="5">Sábado</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Hora inicio</label>
+          <input type="time" id="disp-inicio" value="09:00" step="900">
+        </div>
+        <div class="input-group">
+          <label>Hora fin</label>
+          <input type="time" id="disp-fin" value="10:00" step="900">
+        </div>
+      </div>
+      <button class="btn-primary" onclick="crearDisponibilidad()">+ Añadir bloque</button>
+    </div>
+
+    <div id="lista-disponibilidad"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: PERFIL
+══════════════════════════════════════════════ -->
+<div id="view-perfil" class="view hidden">
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Mi perfil</h1>
+    </div>
+
+    <div class="perfil-avatar-wrap">
+      <div class="perfil-avatar" id="perfil-inicial"></div>
+      <div>
+        <h2 id="perfil-nombre-display"></h2>
+        <span class="badge-rol" id="perfil-rol-display"></span>
+      </div>
+    </div>
+
+    <div class="card form-card">
+      <h3>Editar datos</h3>
+      <div class="input-group">
+        <label>Nombre</label>
+        <input type="text" id="perfil-nombre" placeholder="Tu nombre">
+      </div>
+      <div class="input-group">
+        <label>Teléfono</label>
+        <input type="text" id="perfil-telefono" placeholder="612 345 678">
+      </div>
+      <div class="input-group">
+        <label>Nueva contraseña (dejar en blanco para no cambiar)</label>
+        <input type="password" id="perfil-password" placeholder="••••••••">
+      </div>
+      <div id="perfil-error" class="error-msg hidden"></div>
+      <div id="perfil-success" class="success-msg hidden"></div>
+      <button class="btn-primary" onclick="guardarPerfil()">Guardar cambios</button>
+    </div>
+
+    <button class="btn-logout full" onclick="doLogout()">Cerrar sesión</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
