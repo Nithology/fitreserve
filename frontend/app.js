@@ -288,7 +288,7 @@ async function cargarCalendario() {
             btn.style.cursor  = "default";
             btn.style.opacity = "0.35";
             // Eliminar el evento click que se puso antes
-            btn.replaceWith(btn.cloneNode(true));
+            btn.disabled = true;
             return;
         }
 
@@ -329,7 +329,7 @@ async function cargarCalendario() {
                 btn.classList.add("dia-btn--pasado");
                 btn.style.cursor  = "default";
                 btn.style.opacity = "0.35";
-                btn.replaceWith(btn.cloneNode(true));
+                btn.disabled = true;
             } else if (totalOcupados === 0) {
                 btn.classList.add("dia-btn--libre");
             } else if (totalOcupados < slotsUtiles) {

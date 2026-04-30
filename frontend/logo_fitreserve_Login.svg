@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 230" width="520" height="230">
+  <title>Logo FitReserve</title>
+  <desc>Logo corporativo FitReserve con tipografía Roboto</desc>
+
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&amp;display=swap');
+    </style>
+
+    <filter id="sh" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.16"/>
+    </filter>
+
+    <radialGradient id="grd" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#FFE96B"/>
+      <stop offset="100%" stop-color="#FFC800"/>
+    </radialGradient>
+
+    <clipPath id="clip-hex">
+      <polygon points="0,-72 62.35,-36 62.35,36 0,72 -62.35,36 -62.35,-36"/>
+    </clipPath>
+  </defs>
+
+  <!-- ══ SÍMBOLO ══ -->
+  <g transform="translate(115,115)">
+
+    <!-- Hexágono relleno amarillo -->
+    <polygon
+      points="0,-72 62.35,-36 62.35,36 0,72 -62.35,36 -62.35,-36"
+      fill="url(#grd)"/>
+
+    <!-- Borde interior sutil -->
+    <polygon
+      points="0,-72 62.35,-36 62.35,36 0,72 -62.35,36 -62.35,-36"
+      fill="none"
+      stroke="#E6B800"
+      stroke-width="1.5"
+      opacity="0.6"/>
+
+    <!-- FR en Roboto Black -->
+    <text
+      x="0" y="22"
+      text-anchor="middle"
+      font-family="'Roboto', Arial, sans-serif"
+      font-size="68"
+      font-weight="900"
+      fill="#000000"
+      letter-spacing="-2"
+      clip-path="url(#clip-hex)">FR</text>
+
+    <!-- Hexágono borde exterior -->
+    <polygon
+      points="0,-92 79.67,-46 79.67,46 0,92 -79.67,46 -79.67,-46"
+      fill="none"
+      stroke="#FFD221"
+      stroke-width="4"
+      stroke-linejoin="round"
+      filter="url(#sh)"/>
+
+    <!-- Puntos decorativos en vértices alternos -->
+    <circle cx="0"      cy="-92" r="5"   fill="#FFD221"/>
+    <circle cx="79.67"  cy=" 46" r="5"   fill="#FFD221" opacity="0.6"/>
+    <circle cx="-79.67" cy="-46" r="5"   fill="#FFD221" opacity="0.6"/>
+
+  </g>
+
+  <!-- ══ TIPOGRAFÍA ══ -->
+
+  <!-- Nombre FitReserve en Roboto -->
+  <text
+    x="250" y="100"
+    font-family="'Roboto', Arial, sans-serif"
+    font-size="54"
+    font-weight="900"
+    fill="#1a1a1a"
+    letter-spacing="-1">Fit<tspan fill="#FFD221">Reserve</tspan></text>
+
+  <!-- Línea separadora -->
+  <rect x="250" y="116" width="246" height="3" rx="1.5" fill="#FFD221"/>
+
+  <!-- Tagline en Roboto Regular -->
+  <text
+    x="250" y="147"
+    font-family="'Roboto', Arial, sans-serif"
+    font-size="13"
+    font-weight="400"
+    fill="#6B6464"
+    letter-spacing="4.5">ENTRENAMIENTO PERSONAL</text>
+
+  <!-- Tres puntos decorativos -->
+  <circle cx="250" cy="172" r="3"   fill="#FFD221"/>
+  <circle cx="264" cy="172" r="3"   fill="#FFD221" opacity="0.55"/>
+  <circle cx="278" cy="172" r="3"   fill="#FFD221" opacity="0.28"/>
+
+</svg>

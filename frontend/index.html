@@ -16,8 +16,7 @@
 <div id="view-login" class="view active">
   <div class="auth-wrapper">
     <div class="logo-big">
-      <div class="logo-circle">FR</div>
-      <span class="logo-text">FitReserve</span>
+      <img src="logo_fitreserve.svg" style="width:340px; height:auto; display:block; margin:0 auto;" alt="FitReserve">
     </div>
     <p class="auth-subtitle">Tu entrenamiento, cuando quieras</p>
 
@@ -67,8 +66,7 @@
 ══════════════════════════════════════════════ -->
 <nav id="navbar" class="hidden">
   <div class="nav-logo" onclick="navigate('calendario')">
-    <div class="logo-circle small">FR</div>
-    <span>FitReserve</span>
+    <img src="logo_fitreserve.svg" style="height: 40px; width:auto; max-width:none;" alt="FitReserve">
   </div>
   <div class="nav-links">
     <button class="nav-btn" data-view="calendario" onclick="navigate('calendario')">Calendario</button>
@@ -86,8 +84,7 @@
   <div class="page-container">
 
     <div class="cal-header">
-      <div class="logo-circle small">FR</div>
-      <span class="cal-titulo">FitReserve</span>
+      <img src="logo_fitreserve.svg" style="height:120px; width:auto; max-width:none;" alt="FitReserve">
     </div>
 
     <div class="semana-nav">
@@ -223,11 +220,11 @@
         </div>
         <div class="input-group">
           <label>Hora inicio</label>
-          <input type="time" id="disp-inicio" value="09:00" step="900">
+          <input type="time" id="disp-inicio" value="09:00">
         </div>
         <div class="input-group">
           <label>Hora fin</label>
-          <input type="time" id="disp-fin" value="10:00" step="900">
+          <input type="time" id="disp-fin" value="10:00">
         </div>
       </div>
       <button class="btn-primary" onclick="crearDisponibilidad()">+ Añadir bloque</button>

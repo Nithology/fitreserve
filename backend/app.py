@@ -255,6 +255,25 @@ def get_reservas():
     if not user:
         return jsonify({"error": "Token requerido o inválido"}), 401
 
+    # Marcar como completadas las reservas activas cuya fecha y hora ya pasaron
+    try:
+        conn_auto   = get_connection()
+        cursor_auto = conn_auto.cursor()
+        cursor_auto.execute("""
+            UPDATE reservas
+            SET estado = 'completada'
+            WHERE estado = 'activa'
+              AND (
+                fecha < CURDATE()
+                OR (fecha = CURDATE() AND hora_fin <= CURTIME())
+              )
+        """)
+        conn_auto.commit()
+        cursor_auto.close()
+        conn_auto.close()
+    except Exception:
+        pass  # Si falla el autocompletado no interrumpimos la petición
+
     conn   = get_connection()
     cursor = conn.cursor(dictionary=True)
 

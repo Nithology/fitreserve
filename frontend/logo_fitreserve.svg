@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 200" width="580" height="200">
+  <title>Logo FitReserve</title>
+
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&amp;display=swap');
+    </style>
+    <radialGradient id="grd" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#FFE96B"/>
+      <stop offset="100%" stop-color="#FFC800"/>
+    </radialGradient>
+    <clipPath id="clip-hex">
+      <polygon points="100,18 168,58 168,142 100,182 32,142 32,58"/>
+    </clipPath>
+  </defs>
+
+  <!-- Hexágono relleno -->
+  <polygon
+    points="100,18 168,58 168,142 100,182 32,142 32,58"
+    fill="url(#grd)"/>
+
+  <!-- Borde interior sutil -->
+  <polygon
+    points="100,18 168,58 168,142 100,182 32,142 32,58"
+    fill="none" stroke="#E6B800" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- FR centrado -->
+  <text
+    x="100" y="120"
+    text-anchor="middle"
+    font-family="'Roboto', Arial, sans-serif"
+    font-size="76"
+    font-weight="900"
+    fill="#000000"
+    letter-spacing="-3"
+    clip-path="url(#clip-hex)">FR</text>
+
+  <!-- Hexágono exterior -->
+  <polygon
+    points="100,4 182,48 182,152 100,196 18,152 18,48"
+    fill="none"
+    stroke="#FFD221"
+    stroke-width="4"
+    stroke-linejoin="round"/>
+
+  <!-- Puntos decorativos -->
+  <circle cx="100" cy="4"   r="5" fill="#FFD221"/>
+  <circle cx="182" cy="152" r="5" fill="#FFD221" opacity="0.6"/>
+  <circle cx="18"  cy="48"  r="5" fill="#FFD221" opacity="0.6"/>
+
+  <!-- Nombre FitReserve — fuente reducida para que quepa -->
+  <text
+    x="220" y="90"
+    font-family="'Roboto', Arial, sans-serif"
+    font-size="44"
+    font-weight="900"
+    fill="#1a1a1a"
+    letter-spacing="-0.5">Fit<tspan fill="#FFD221">Reserve</tspan></text>
+
+  <!-- Línea separadora -->
+  <rect x="220" y="104" width="345" height="2.5" rx="1.25" fill="#FFD221"/>
+
+  <!-- Tagline -->
+  <text
+    x="220" y="130"
+    font-family="'Roboto', Arial, sans-serif"
+    font-size="11"
+    font-weight="400"
+    fill="#6B6464"
+    letter-spacing="4">ENTRENAMIENTO PERSONAL</text>
+
+  <!-- Tres puntos -->
+  <circle cx="220" cy="152" r="3"   fill="#FFD221"/>
+  <circle cx="233" cy="152" r="3"   fill="#FFD221" opacity="0.55"/>
+  <circle cx="246" cy="152" r="3"   fill="#FFD221" opacity="0.28"/>
+
+</svg>

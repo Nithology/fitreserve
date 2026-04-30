@@ -54,6 +54,13 @@ body {
 
 .logo-big { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 
+.logo-big img {
+  width: 340px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .logo-circle {
   width: 70px; height: 70px;
   background: var(--yellow);
@@ -82,11 +89,20 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   z-index: 100;
+  overflow: visible;
 }
 
 .nav-logo {
   display: flex; align-items: center; gap: 8px;
   cursor: pointer; font-weight: 700; font-size: 16px; color: var(--yellow);
+  overflow: visible;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+  max-width: none;
 }
 
 .nav-links { display: flex; gap: 4px; }
@@ -233,6 +249,14 @@ select option { background: var(--dark); }
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  overflow: visible;
+}
+
+.cal-header img {
+  height: 44px;
+  width: auto;
+  max-width: none;
+  display: block;
 }
 
 .cal-titulo {

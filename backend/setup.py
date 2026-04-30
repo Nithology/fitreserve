@@ -14,7 +14,7 @@ import mysql.connector
 # ── Configuración (debe coincidir con db.py) ──────────
 HOST     = "localhost"
 USER     = "root"
-PASSWORD = "domyos3594."          # Cambia si tu MySQL tiene contraseña
+PASSWORD = ""          # Cambia si tu MySQL tiene contraseña
 DB_NAME  = "fitreserve"
 
 # ── Datos del entrenador por defecto ──────────────────
